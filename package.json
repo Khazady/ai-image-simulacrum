@@ -1,5 +1,6 @@
 {
   "name": "ai-image-simulacrum",
+  "homepage": "https://khazady.github.io/ai-image-simulacrum/",
   "private": true,
   "version": "0.0.1",
   "type": "module",
@@ -9,7 +10,9 @@
     "lint": "eslint .",
     "preview": "vite preview",
     "format": "prettier --write .",
-    "format:check": "prettier --check ."
+    "format:check": "prettier --check .",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d dist"
   },
   "dependencies": {
     "react": "^19.1.1",
