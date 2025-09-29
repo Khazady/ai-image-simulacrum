@@ -1,73 +1,31 @@
-# React + TypeScript + Vite
+# AI Image Simulacrum
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Overview
 
-Currently, two official plugins are available:
+AI Image Simulacrum is an AI-generator inspired interface where users craft prompts, trigger mocked image generations, and browse the resulting gallery. The UI follows Atomic Design principles and uses scoped CSS Modules to deliver a polished, responsive experience across devices.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Node and npm versions
 
-## React Compiler
+Use the Node and npm versions defined in `package.json` under the `engines` field (`node@24.8.0`, `npm@11.6.0`). With `engine-strict=true` in `.npmrc`, other versions will cause `npm install` to fail.
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+A `.nvmrc` file is provided for convenience:
 
-## Expanding the ESLint configuration
+- Run `nvm use` in the project root (reads `.nvmrc`). If the version is missing, run `nvm install` first.
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+## Installation
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+1. Clone the repository: `git clone https://github.com/Khazady/ai-image-simulacrum.git`.
+2. Change into the project directory.
+3. Install dependencies: `npm install`.
+4. Start the development server: `npm run dev`.
+5. Build and preview for production: `npm run build`, then `npm run preview`.
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+## Technologies Used
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+React TypeScript CSS Modules React Context API Vite
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+## Project Architecture
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+Atomic Design – components are grouped into atoms, molecules, organisms, and templates for clarity.
+React Context – centralizes generation state (history, loader, errors) for easy sharing across the interface.
+Mocked API pipeline – a 2-second timeout simulates image generation and stores results in `localStorage`.
