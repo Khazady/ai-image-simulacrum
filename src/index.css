@@ -18,6 +18,9 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
+html {
+  overscroll-behavior: none;
+}
 body {
   min-height: 100vh;
 }
