@@ -1,4 +1,6 @@
 import { IconButton } from "@/components/atoms/IconButton";
+import { cn } from "@/lib/utils/cn";
+import { dictionary } from "@/lib/dictionary";
 import styles from "./HistoryItem.module.css";
 
 export interface HistoryItemProps {
@@ -24,7 +26,7 @@ export const HistoryItem = ({
   const handleRemove = () => onRemove(id);
 
   return (
-    <li className={isActive ? styles.active : styles.item}>
+    <li className={cn(styles.item, isActive && styles.active)}>
       <button
         type="button"
         className={styles.entryButton}
@@ -38,7 +40,7 @@ export const HistoryItem = ({
         onClick={handleRemove}
         disabled={disableRemoval}
       >
-        X
+        {dictionary.historyItem.removeIcon}
       </IconButton>
     </li>
   );
