@@ -1,0 +1,31 @@
+.card {
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--border-default);
+  box-shadow: var(--shadow-soft);
+  padding: clamp(calc(var(--space-unit) * 5), 2vw, calc(var(--space-unit) * 7));
+  position: relative;
+  transition: box-shadow 0.2s ease, transform 0.2s ease;
+}
+
+.surface {
+  background: var(--surface-base);
+}
+
+.surface:hover {
+  box-shadow: var(--shadow-soft);
+}
+
+.frosted {
+  backdrop-filter: blur(12px);
+  background: linear-gradient(145deg, rgba(255, 255, 255, 0.92), rgba(243, 246, 255, 0.9));
+  border-color: var(--border-default);
+  box-shadow: var(--shadow-soft);
+}
+
+.contrast {
+  background: var(--surface-inverse);
+  border-color: transparent;
+  box-shadow: var(--shadow-contrast);
+  color: var(--color-text-inverse);
+  overflow: hidden;
+}
