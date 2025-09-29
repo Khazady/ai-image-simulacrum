@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { IconButton } from "@/components/atoms/IconButton";
 import { cn } from "@/lib/utils/cn";
 import { dictionary } from "@/lib/dictionary";
@@ -22,11 +23,25 @@ export const HistoryItem = ({
   onRemove,
   disableRemoval = false,
 }: HistoryItemProps) => {
+  const [isHovered, setIsHovered] = useState(false);
+  const [isDeleteHovered, setIsDeleteHovered] = useState(false);
+
   const handleSelect = () => onSelect(id);
   const handleRemove = () => onRemove(id);
 
   return (
-    <li className={cn(styles.item, isActive && styles.active)}>
+    <li
+      className={cn(
+        styles.item,
+        isActive && styles.active,
+        isHovered && !isDeleteHovered && styles.hover,
+      )}
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={() => {
+        setIsHovered(false);
+        setIsDeleteHovered(false);
+      }}
+    >
       <button
         type="button"
         className={styles.entryButton}
@@ -39,6 +54,8 @@ export const HistoryItem = ({
         tone="danger"
         onClick={handleRemove}
         disabled={disableRemoval}
+        onMouseEnter={() => setIsDeleteHovered(true)}
+        onMouseLeave={() => setIsDeleteHovered(false)}
       >
         {dictionary.historyItem.removeIcon}
       </IconButton>

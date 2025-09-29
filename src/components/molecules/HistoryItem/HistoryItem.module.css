@@ -7,12 +7,16 @@
   display: flex;
   gap: calc(var(--space-unit) * 3);
   padding: var(--space-unit);
-  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+  transition: background 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
 }
 
 .active {
   border-color: color-mix(in srgb, var(--color-brand) 32%, transparent);
   box-shadow: var(--shadow-focus);
+}
+
+.hover {
+  background: color-mix(in srgb, var(--surface-base) 80%, var(--color-brand) 20%);
 }
 
 .entryButton {
@@ -24,11 +28,6 @@
   flex: 1;
   padding: calc(var(--space-unit) * 3) calc(var(--space-unit) * 4);
   text-align: left;
-  transition: background-color 0.2s ease;
-}
-
-.entryButton:hover {
-  background: color-mix(in srgb, var(--color-brand) 16%, transparent);
 }
 
 .prompt {
